@@ -1,3 +1,4 @@
+
 public class Direccion {
 
     private String calle;
@@ -9,6 +10,16 @@ public class Direccion {
     private String estado;
 
     // CONSTRUCTORES
+    public Direccion() {
+        setCalle("No disponible");
+        setNumeroExterior(0);
+        setNumeroInterior(0);
+        setColonia("No disponible");
+        setCodigoPostal(0);
+        setCiudad("No disponible");
+        setEstado("No disponible");
+    }
+
     public Direccion(String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado) {
         setCalle(calle);
         setNumeroExterior(numeroExterior);
@@ -81,5 +92,5 @@ public class Direccion {
     public String toString() {
         return this.calle + " " + this.numeroExterior + " - " + this.numeroInterior + ", " + this.colonia + ", " + this.codigoPostal + ", " + this.ciudad + ", " + this.estado;
     }
-    
+
 }

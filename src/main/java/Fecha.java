@@ -6,6 +6,12 @@ public class Fecha {
     private int dia;
 
     // CONSTRUCTORES 
+    public Fecha() {
+        setAnio(0);
+        setMes(0);
+        setDia(0);
+    }
+
     public Fecha(int anio, int mes, int dia) {
         setAnio(anio);
         setMes(mes);

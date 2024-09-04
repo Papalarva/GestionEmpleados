@@ -1,7 +1,8 @@
-public class GestionEmpleados {
 
-    public static void main(String[] args) {
-        // Se inicializa el repositorio 
-        System.out.println("Hello World!");
-    }
+import java.util.ArrayList;
+
+public class GestionEmpleados {
+    private ArrayList<Empleado> empleados;
+    
+    
 }
