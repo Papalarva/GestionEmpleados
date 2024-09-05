@@ -12,8 +12,18 @@ public class GestionEmpleados {
         empleados = new ArrayList<>();
     }
 
-//    public abstract void cargaDatosDomina();
-//
+    public void cargaDatosDomina() {
+        for (Empleado empleado : empleados) {
+            if (empleado instanceof TrabajadorXComision) {
+                ((TrabajadorXComision) empleado).TrabajadorXComision();
+            } else if (empleado instanceof TrabajadorXHora) {
+                ((TrabajadorXHora) empleado).TrabajadorXHora();
+            } else if (empleado instanceof TrabajadorXPieza) {
+                ((TrabajadorXPieza) empleado).TrabajadorXPieza();
+            }
+        }
+    }
+
     public void consultarDatos() {
         System.out.print("Ingrese el RFC del empleado: ");
         String rfc = sc.nextLine();
@@ -28,6 +38,7 @@ public class GestionEmpleados {
             System.out.println("EMPLEADO NO ENCONTRADO");
         }
     }
+
     public void contratarEmpleado() {
 
         System.out.println("-----D A T O S   D E L   E M P L E A D O-----");
@@ -136,15 +147,7 @@ public class GestionEmpleados {
     }
 
 //    public abstract void generarNomina(String periodo);
-    public void modificarDatos(String rfc){
-        for (Empleado empleado : empleados) {
-            if (empleado instanceof TrabajadorXComision ) {
-                ((TrabajadorXComision) empleado).TrabajadorXComision();
-            } else if (empleado instanceof TrabajadorXHora) {
-                ((TrabajadorXHora) empleado).TrabajadorXHora();
-            } else if (empleado instanceof TrabajadorXPieza )  {
-                ((TrabajadorXPieza) empleado).TrabajadorXPieza();
-            }
-        }
+    public void modificarDatos(String rfc) {
+
     }
 }

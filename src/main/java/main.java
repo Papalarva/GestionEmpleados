@@ -3,5 +3,7 @@ public class main {
         GestionEmpleados prueba = new GestionEmpleados();
         
         prueba.contratarEmpleado();
+        prueba.consultarDatos();
+        prueba.cargaDatosDomina();
     }
 }

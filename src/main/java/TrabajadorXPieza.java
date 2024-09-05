@@ -53,7 +53,7 @@ public class TrabajadorXPieza extends Empleado {
     // METODO TOSTRING
     @Override
     public String toString() {
-        return super.toString() + "\nPAGO POR PIEZA: $" + this.pagoXPieza + "\nCANTIDAD PRODUCIDA: " + this.cantidad;
+        return super.toString() + "\nPAGO POR PIEZA: $" + this.pagoXPieza;
     }
 
 }

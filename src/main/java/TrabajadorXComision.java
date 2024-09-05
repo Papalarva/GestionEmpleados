@@ -52,7 +52,7 @@ public class TrabajadorXComision extends Empleado {
     // METODO TOSTRING
     @Override
     public String toString() {
-        return super.toString() + "\nSALARIO BASE: " + this.salarioBase + "\nCOMISION: " + "VENTAS: $" + this.cantidad;
+        return super.toString() + "\nSALARIO BASE: " + this.salarioBase + "\nCOMISION: ";
     }
 
     // METODOS PROPIOS
@@ -66,5 +66,8 @@ public class TrabajadorXComision extends Empleado {
     public double sueldo() {
         return this.salarioBase + (this.comision * this.cantidad);
     }
+    
+    // METODO TOSTRINGS
+    
 
 }

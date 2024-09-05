@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class TrabajadorXHora extends Empleado {
 
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
     private double pagoXHora;
     private int horasTrabajadas;
 
@@ -56,4 +56,11 @@ public class TrabajadorXHora extends Empleado {
         return sueldo;
     }
 
+    // METODO TOSTRING
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nPAGO POR HORA: $" + this.pagoXHora;
+    }
+    
 }

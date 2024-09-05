@@ -32,4 +32,12 @@ public class Jefe extends Empleado {
     public double sueldo() {
         return this.sueldoSemanal;
     }
+    
+    // METODO TOSTRING
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSUELDO SEMANAL: " + this.sueldoSemanal;
+    }
+    
 }
