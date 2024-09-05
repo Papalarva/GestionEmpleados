@@ -14,8 +14,8 @@ public class Jefe extends Empleado {
         this.sueldoSemanal = sueldoSemanal;
     }
 
-    public Jefe(String rfc, String departamento, String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, double sueldoSemanal) {
-        super(rfc, departamento, nombres, apellidoPaterno, apellidoMaterno, anio, mes, dia, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado);
+    public Jefe(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, String rfc, String departamento, double sueldoSemanal) {
+        super(nombres, apellidoPaterno, apellidoMaterno, anio, mes, dia, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento);
         this.sueldoSemanal = sueldoSemanal;
     }
 

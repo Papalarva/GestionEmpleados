@@ -1,16 +1,89 @@
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public abstract class GestionEmpleados {
-    private static ArrayList<Empleado> empleados;
+public class GestionEmpleados {
+
+    Scanner sc = new Scanner(System.in);
+
+    private ArrayList<Empleado> empleados;
+
+    public GestionEmpleados() {
+        empleados = new ArrayList<>();
+    }
+
     
-    public abstract int GestionEmpleados(int numeroEmpleados);
-    public abstract void cargaDatosDomina();
-    public abstract void consultarDatos(String rfc);
-    public abstract void contratarEmpleado(Empleado e);
-    public abstract void despedirEmpleado(String rfc);
-    public abstract void generarNomina(String periodo);
-    public abstract void modificarDatos(String rfc);
-    
-    
+//    public abstract void cargaDatosDomina();
+//
+//    public abstract void consultarDatos(String rfc);
+
+    public void contratarEmpleado() { 
+        
+        System.out.println("-----D A T O S   D E L   E M P L E A D O-----");
+        System.out.print("Ingrese el o los nombres: ");
+        String nombre = sc.nextLine();
+        System.out.print("Ingrese el apellido Paterno: ");
+        String apellidoPaterno = sc.nextLine();
+        System.out.print("Ingrese el apellido Materno: ");
+        String apellidoMaterno = sc.nextLine();
+        System.out.println("\n-----FECHA DE NACIMIENTO-----");
+        System.out.print("Ingrese el dia: ");
+        int dia = Integer.parseInt(sc.nextLine());
+        System.out.print("Ingrese el mes: ");
+        int mes = Integer.parseInt(sc.nextLine());
+        System.out.print("Ingrese el anio: ");
+        int anio = Integer.parseInt(sc.nextLine());
+        System.out.println("\n-----DOMICILIO-----");
+        System.out.print("Ingrese la calle: ");
+        String calle = sc.nextLine();
+        System.out.print("Ingrese el numero exterior: ");
+        int numeroExterior = Integer.parseInt(sc.nextLine());
+        System.out.println("Ingrese el numero interior: ");
+        int numeroInterior = Integer.parseInt(sc.nextLine());
+        System.out.println("Ingrese la colonia: ");
+        String colonia = sc.nextLine();
+        System.out.println("Ingrese el codigo postal");
+        int codigoPostal = Integer.parseInt(sc.nextLine());
+        System.out.println("Ingrese la ciudad: ");
+        String ciudad = sc.nextLine();
+        System.out.println("Ingrese el estado: ");
+        String estado = sc.nextLine();
+        System.out.println("\n----- DATOS DE LA EMPRESA -----");
+        System.out.println("Ingrese el RFC del empleado: ");
+        String rfc = sc.nextLine();
+        System.out.println("Ingrese el departamento asignado: ");
+        String departamento = sc.nextLine();
+
+        System.out.print("----- TIPO DE EMPLEADO ----- "
+                + "\n1) Jefe"
+                + "\n2) Trabajador por comision" 
+                + "\n3) Trabajador por pieza" +
+                "\n4) Trabajador por hora" +
+                "\nOPCION: ");
+        int opcion = Integer.parseInt(sc.nextLine());
+        switch(opcion) {
+            case 1: 
+                System.out.println("Ingrese el sueldo semanal: ");
+                double sueldo = Double.parseDouble(sc.nextLine());
+                empleados.add(new Jefe(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento, sueldo));
+                break;
+            case 2:
+                empleados.add(new TrabajadorXComision(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento));
+                break;
+            case 3:
+                empleados.add(new TrabajadorXPieza(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento));
+                break;
+            case 4:
+                empleados.add(new TrabajadorXHora(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento));
+                break;
+        }
+
+    }
+
+//    public abstract void despedirEmpleado(String rfc);
+//
+//    public abstract void generarNomina(String periodo);
+//
+//    public abstract void modificarDatos(String rfc);
+
 }
