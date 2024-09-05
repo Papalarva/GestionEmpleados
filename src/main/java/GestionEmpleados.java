@@ -64,7 +64,7 @@ public class GestionEmpleados {
         int numeroInterior = Integer.parseInt(sc.nextLine());
         System.out.print("Ingrese la colonia: ");
         String colonia = sc.nextLine();
-        System.out.print("Ingrese el codigo postal");
+        System.out.print("Ingrese el codigo postal: ");
         int codigoPostal = Integer.parseInt(sc.nextLine());
         System.out.print("Ingrese la ciudad: ");
         String ciudad = sc.nextLine();
@@ -85,13 +85,14 @@ public class GestionEmpleados {
         if (encontrado) {
             System.out.println("Empleado ya registrado");
         } else {
-            System.out.print("----- TIPO DE EMPLEADO ----- "
+            System.out.print("\n----- TIPO DE EMPLEADO ----- "
                     + "\n1) Jefe"
                     + "\n2) Trabajador por comision"
                     + "\n3) Trabajador por pieza"
                     + "\n4) Trabajador por hora"
                     + "\nOPCION: ");
             int opcion = Integer.parseInt(sc.nextLine());
+            System.out.println("");
             switch (opcion) {
                 case 1:
                     System.out.print("Ingrese el sueldo semanal: $");

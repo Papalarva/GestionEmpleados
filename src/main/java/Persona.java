@@ -74,8 +74,8 @@ public class Persona {
     // METODO TOSTRING
     @Override
     public String toString() {
-        return this.nombres + " " + this.apellidoPaterno + this.apellidoMaterno
-                + "\nEDAD: " + edad() + " DOMICILIO:" + domicilio;
+        return this.nombres + " " + this.apellidoPaterno + " "+ this.apellidoMaterno
+                + "\tEDAD: " + edad() + " DOMICILIO:" + domicilio;
     }
 
 }

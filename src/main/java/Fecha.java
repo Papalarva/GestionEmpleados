@@ -12,7 +12,8 @@ public class Fecha {
         setDia(0);
     }
 
-    public Fecha(int anio, int mes, int dia) {
+    public Fecha(int dia, int mes, int anio) {
+        
         setAnio(anio);
         setMes(mes);
         setDia(dia);
