@@ -14,7 +14,20 @@ public class GestionEmpleados {
 
 //    public abstract void cargaDatosDomina();
 //
-//    public abstract void consultarDatos(String rfc);
+    public void consultarDatos() {
+        System.out.print("Ingrese el RFC del empleado: ");
+        String rfc = sc.nextLine();
+        boolean encontrado = false;
+        for (Empleado empleado : empleados) {
+            if (empleado.getRfc().equals(rfc)) {
+                encontrado = true;
+                System.out.println(empleado);
+            }
+        }
+        if (!encontrado) {
+            System.out.println("EMPLEADO NO ENCONTRADO");
+        }
+    }
     public void contratarEmpleado() {
 
         System.out.println("-----D A T O S   D E L   E M P L E A D O-----");
@@ -107,7 +120,7 @@ public class GestionEmpleados {
         for (Empleado empleado : empleados) {
             if (empleado.getRfc().equals(rfc)) {
                 encontrado = true;
-                System.out.println(empleado);
+                System.out.println(empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoMaterno());
                 System.out.println("\nDeseas eliminar al empleado? 1)Si 2)No");
                 int opcion = Integer.parseInt(sc.nextLine());
                 if (opcion == 1) {
@@ -123,6 +136,11 @@ public class GestionEmpleados {
     }
 
 //    public abstract void generarNomina(String periodo);
-//
-//    public abstract void modificarDatos(String rfc);
+    public void modificarDatos(String rfc){
+        for (Empleado empleado : empleados) {
+            if (empleado instanceof TrabajadorXComision ) {
+                ((TrabajadorXComision) empleado).TrabajadorXComision();
+            }
+        }
+    }
 }
