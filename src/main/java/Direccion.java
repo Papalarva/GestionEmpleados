@@ -36,7 +36,7 @@ public class Direccion {
     }
 
     public void setCalle(String calle) {
-        this.calle = calle;
+        this.calle = calle.toUpperCase();
     }
 
     public int getNumeroExterior() {
@@ -60,7 +60,7 @@ public class Direccion {
     }
 
     public void setColonia(String colonia) {
-        this.colonia = colonia;
+        this.colonia = colonia.toUpperCase();
     }
 
     public int getCodigoPostal() {
@@ -76,7 +76,7 @@ public class Direccion {
     }
 
     public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+        this.ciudad = ciudad.toUpperCase();
     }
 
     public String getEstado() {
@@ -84,7 +84,7 @@ public class Direccion {
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+        this.estado = estado.toUpperCase();
     }
 
     // SALIDA: Calle Falsa 1234-5, Avenida Siempre Viva, 34556, Ciudad Real, Coahuila

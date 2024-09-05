@@ -35,15 +35,17 @@ public class Fecha {
                 }
             }
         } else if (this.mes == 1 || this.mes == 3 || this.mes == 5 || this.mes == 7 || this.mes == 8 || this.mes == 10 || this.mes == 12) {
-            if ((this.anio % 4) == 0) {
-                if (dia > 31) {
-                    this.dia = 31;
-                } else {
-                    this.dia = dia;
-                }
+            if (dia > 31) {
+                this.dia = 31;
+            } else {
+                this.dia = dia;
             }
         } else {
-            this.dia = dia;
+            if (dia > 30) {
+                this.dia = 30;
+            } else {
+                this.dia = dia;
+            }
         }
     }
 
@@ -66,7 +68,7 @@ public class Fecha {
     }
 
     public void setAnio(int anio) {
-        this.anio = anio < 2024 ? 2024 : anio;
+        this.anio = anio > 0 ? anio : 2000;
     }
 
     // Salida 02/02/2025

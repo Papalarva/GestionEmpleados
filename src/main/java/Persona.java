@@ -39,7 +39,7 @@ public class Persona {
     }
 
     public void setNombres(String nombres) {
-        this.nombres = nombres;
+        this.nombres = nombres.toUpperCase();
     }
 
     public String getApellidoPaterno() {
@@ -47,15 +47,15 @@ public class Persona {
     }
 
     public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoPaterno = apellidoPaterno.toUpperCase();
     }
 
     public String getApellidoMaterno() {
-        return apellidoMaterno;
+        return apellidoMaterno.toUpperCase();
     }
 
     public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+        this.apellidoMaterno = apellidoMaterno.toUpperCase();
     }
 
     public Fecha getFechaNacimiento() {
@@ -64,6 +64,18 @@ public class Persona {
 
     public Direccion getDomicilio() {
         return domicilio;
+    }
+
+    // METODO EDAD
+    public int edad() {
+        return 2024 - this.fechaNacimiento.getAnio();
+    }
+
+    // METODO TOSTRING
+    @Override
+    public String toString() {
+        return this.nombres + " " + this.apellidoPaterno + this.apellidoMaterno
+                + "\nEDAD: " + edad() + " DOMICILIO:" + domicilio;
     }
 
 }

@@ -1,10 +1,16 @@
 
-public class Empleado extends Persona {
+public abstract class Empleado extends Persona {
 
     protected String rfc;
     protected String departamento;
 
     // CONSTRUCTORES
+    public Empleado() {
+        super();
+        setRfc("");
+        setDepartamento("");
+    }
+
     public Empleado(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento) {
         super(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, domicilio);
         setRfc(rfc);
@@ -16,16 +22,14 @@ public class Empleado extends Persona {
         this.rfc = rfc;
         this.departamento = departamento;
     }
-    
-    
-    
+
     // METODOS GETS Y SETS
     public String getRfc() {
         return rfc;
     }
 
     public void setRfc(String rfc) {
-        this.rfc = rfc;
+        this.rfc = rfc.toUpperCase();
     }
 
     public String getDepartamento() {
@@ -33,7 +37,16 @@ public class Empleado extends Persona {
     }
 
     public void setDepartamento(String departamento) {
-        this.departamento = departamento;
+        this.departamento = departamento.toUpperCase();
     }
+
+    // METODO TO STRING
+    @Override
+    public String toString() {
+        return super.toString() + "\nRFC: " + this.rfc + "\nDEPARTAMENTO: " + this.departamento;
+    }
+
+    // METODOS PROPIOS
+    public abstract double sueldo();
 
 }
