@@ -6,20 +6,22 @@ public class TrabajadorXComision extends Empleado {
     Scanner sc = new Scanner(System.in);
     private double salarioBase;
     private double comision;
-    private int cantidad;
+    private int cantidad = 0;
 
     // CONSTRUCTORES
     public TrabajadorXComision() {
     }
 
-    public TrabajadorXComision(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento) {
+    public TrabajadorXComision(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento, double salarioBase, double comsion) {
         super(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, domicilio, rfc, departamento);
-        TrabajadorXComision();
+        setSalarioBase(salarioBase);
+        setComision(comision);
     }
 
     public TrabajadorXComision(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, String rfc, String departamento) {
         super(nombres, apellidoPaterno, apellidoMaterno, anio, mes, dia, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento);
-        TrabajadorXComision();
+        setSalarioBase(salarioBase);
+        setComision(comision);
     }
 
     // METODOS SETS Y GETS
@@ -55,10 +57,6 @@ public class TrabajadorXComision extends Empleado {
 
     // METODOS PROPIOS
     public void TrabajadorXComision() {
-        System.out.print("Introduzca el salario base del empleado: $");
-        this.salarioBase = sc.nextDouble();
-        System.out.print("Ingrese la comision del empleado (Entre 0 a 1): ");
-        this.comision = sc.nextDouble();
         System.out.print("Ingrese la cantidad vendida: $");
         this.cantidad = sc.nextInt();
 

@@ -12,12 +12,14 @@ public class TrabajadorXHora extends Empleado {
         super();
     }
 
-    public TrabajadorXHora(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento) {
+    public TrabajadorXHora(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento, double pagoXHora) {
         super(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, domicilio, rfc, departamento);
+        setPagoXHora(pagoXHora);
     }
 
-    public TrabajadorXHora(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, String rfc, String departamento) {
+    public TrabajadorXHora(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, String rfc, String departamento, double pagoXHora) {
         super(nombres, apellidoPaterno, apellidoMaterno, anio, mes, dia, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento);
+        setPagoXHora(pagoXHora);
     }
 
     // METODOS GETS Y SETS
@@ -39,8 +41,6 @@ public class TrabajadorXHora extends Empleado {
 
     // METODOS PROPIOS
     public void TrabajadorXHora() {
-        System.out.println("Ingrese el pago por hora: $");
-        this.pagoXHora = sc.nextDouble();
         System.out.println("Ingrese las horas trabajadas: ");
         this.horasTrabajadas = sc.nextInt();
     }

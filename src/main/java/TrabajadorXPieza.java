@@ -5,21 +5,21 @@ public class TrabajadorXPieza extends Empleado {
 
     Scanner sc = new Scanner(System.in);
     private double pagoXPieza;
-    private int cantidad;
+    private int cantidad = 0;
 
     // CONTRUCTORES
     public TrabajadorXPieza() {
         super();
     }
 
-    public TrabajadorXPieza(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento) {
+    public TrabajadorXPieza(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento, double pagoXPieza) {
         super(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, domicilio, rfc, departamento);
-        TrabajadorXPieza();
+        setPagoXPieza(pagoXPieza);
     }
 
-    public TrabajadorXPieza(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, String rfc, String departamento) {
+    public TrabajadorXPieza(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, String rfc, String departamento, double pagoXPieza) {
         super(nombres, apellidoPaterno, apellidoMaterno, anio, mes, dia, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento);
-        TrabajadorXPieza();
+        setPagoXPieza(pagoXPieza);
     }
 
     // METODOS GETS Y SETS
@@ -41,8 +41,6 @@ public class TrabajadorXPieza extends Empleado {
 
     // METODOS PROPIOS
     public void TrabajadorXPieza() {
-        System.out.println("Ingrese el pago por pieza: $");
-        this.pagoXPieza = sc.nextDouble();
         System.out.println("Ingrese la cantidad de piezas producidas: ");
         this.pagoXPieza = sc.nextInt();
     }
