@@ -41,7 +41,7 @@ public class TrabajadorXPieza extends Empleado {
 
     // METODOS PROPIOS
     public void TrabajadorXPieza() {
-        System.out.println("Ingrese la cantidad de piezas producidas: ");
+        System.out.print("Ingrese la cantidad de piezas producidas: ");
         this.pagoXPieza = sc.nextInt();
     }
 

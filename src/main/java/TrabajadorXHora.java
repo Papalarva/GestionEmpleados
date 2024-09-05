@@ -41,7 +41,7 @@ public class TrabajadorXHora extends Empleado {
 
     // METODOS PROPIOS
     public void TrabajadorXHora() {
-        System.out.println("Ingrese las horas trabajadas: ");
+        System.out.print("Ingrese las horas trabajadas: ");
         this.horasTrabajadas = sc.nextInt();
     }
 

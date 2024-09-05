@@ -49,20 +49,20 @@ public class GestionEmpleados {
         String calle = sc.nextLine();
         System.out.print("Ingrese el numero exterior: ");
         int numeroExterior = Integer.parseInt(sc.nextLine());
-        System.out.println("Ingrese el numero interior: ");
+        System.out.print("Ingrese el numero interior: ");
         int numeroInterior = Integer.parseInt(sc.nextLine());
-        System.out.println("Ingrese la colonia: ");
+        System.out.print("Ingrese la colonia: ");
         String colonia = sc.nextLine();
-        System.out.println("Ingrese el codigo postal");
+        System.out.print("Ingrese el codigo postal");
         int codigoPostal = Integer.parseInt(sc.nextLine());
-        System.out.println("Ingrese la ciudad: ");
+        System.out.print("Ingrese la ciudad: ");
         String ciudad = sc.nextLine();
-        System.out.println("Ingrese el estado: ");
+        System.out.print("Ingrese el estado: ");
         String estado = sc.nextLine();
         System.out.println("\n----- DATOS DE LA EMPRESA -----");
-        System.out.println("Ingrese el RFC del empleado: ");
+        System.out.print("Ingrese el RFC del empleado: ");
         String rfc = sc.nextLine();
-        System.out.println("Ingrese el departamento asignado: ");
+        System.out.print("Ingrese el departamento asignado: ");
         String departamento = sc.nextLine();
         boolean encontrado = false;
         for (Empleado empleado : empleados) {
@@ -83,7 +83,7 @@ public class GestionEmpleados {
             int opcion = Integer.parseInt(sc.nextLine());
             switch (opcion) {
                 case 1:
-                    System.out.println("Ingrese el sueldo semanal: ");
+                    System.out.print("Ingrese el sueldo semanal: $");
                     double sueldo = Double.parseDouble(sc.nextLine());
                     empleados.add(new Jefe(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento, sueldo));
                     break;
@@ -95,12 +95,12 @@ public class GestionEmpleados {
                     empleados.add(new TrabajadorXComision(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento));
                     break;
                 case 3:
-                    System.out.println("Ingrese el pago por pieza: $");
+                    System.out.print("Ingrese el pago por pieza: $");
                     double pagoXPieza = Double.parseDouble(sc.nextLine());
                     empleados.add(new TrabajadorXPieza(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento, pagoXPieza));
                     break;
                 case 4:
-                    System.out.println("Ingrese el pago por hora: $");
+                    System.out.print("Ingrese el pago por hora: $");
                     double pagoXHora = Double.parseDouble(sc.nextLine());
                     empleados.add(new TrabajadorXHora(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento, pagoXHora));
                     break;
@@ -121,7 +121,7 @@ public class GestionEmpleados {
             if (empleado.getRfc().equals(rfc)) {
                 encontrado = true;
                 System.out.println(empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoMaterno());
-                System.out.println("\nDeseas eliminar al empleado? 1)Si 2)No");
+                System.out.print("\nDeseas eliminar al empleado? 1)Si 2)No:  ");
                 int opcion = Integer.parseInt(sc.nextLine());
                 if (opcion == 1) {
                     empleados.remove(empleado);
@@ -140,6 +140,10 @@ public class GestionEmpleados {
         for (Empleado empleado : empleados) {
             if (empleado instanceof TrabajadorXComision ) {
                 ((TrabajadorXComision) empleado).TrabajadorXComision();
+            } else if (empleado instanceof TrabajadorXHora) {
+                ((TrabajadorXHora) empleado).TrabajadorXHora();
+            } else if (empleado instanceof TrabajadorXPieza )  {
+                ((TrabajadorXPieza) empleado).TrabajadorXPieza();
             }
         }
     }
