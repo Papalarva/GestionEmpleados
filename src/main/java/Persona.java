@@ -24,7 +24,7 @@ public class Persona {
         this.domicilio = domicilio;
     }
 
-    public Persona(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle,
+    public Persona(String nombres, String apellidoPaterno, String apellidoMaterno, int dia, int mes, int anio, String calle,
             int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado) {
         setNombres(nombres);
         setApellidoPaterno(apellidoPaterno);
@@ -75,7 +75,7 @@ public class Persona {
     @Override
     public String toString() {
         return this.nombres + " " + this.apellidoPaterno + " "+ this.apellidoMaterno
-                + "\tEDAD: " + edad() + " DOMICILIO:" + domicilio;
+                + "\nEDAD: " + edad() + " \nDOMICILIO:" + domicilio;
     }
 
 }

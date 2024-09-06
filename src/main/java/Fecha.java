@@ -65,7 +65,7 @@ public class Fecha {
     }
 
     public int getAnio() {
-        return anio;
+        return this.anio;
     }
 
     public void setAnio(int anio) {

@@ -27,9 +27,10 @@ public class GestionEmpleados {
     public void consultarDatos() {
         System.out.print("Ingrese el RFC del empleado: ");
         String rfc = sc.nextLine();
+        System.out.println("");
         boolean encontrado = false;
         for (Empleado empleado : empleados) {
-            if (empleado.getRfc().equals(rfc)) {
+            if (empleado.getRfc().equals(rfc.toUpperCase())) {
                 encontrado = true;
                 System.out.println(empleado);
             }
@@ -120,7 +121,7 @@ public class GestionEmpleados {
                     System.out.println("Opcion no valida");
                     break;
             }
-            System.out.println("EMPLEADO AGREGADO EXITOSAMENTE");
+            System.out.println("\nEMPLEADO AGREGADO EXITOSAMENTE\n");
         }
 
     }
@@ -132,11 +133,14 @@ public class GestionEmpleados {
         for (Empleado empleado : empleados) {
             if (empleado.getRfc().equals(rfc)) {
                 encontrado = true;
-                System.out.println(empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoMaterno());
+                System.out.println("\n" + empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoMaterno() 
+                        + "\nDEPARTAMENTO: " + empleado.departamento);
+                
                 System.out.print("\nDeseas eliminar al empleado? 1)Si 2)No:  ");
                 int opcion = Integer.parseInt(sc.nextLine());
                 if (opcion == 1) {
                     empleados.remove(empleado);
+                    break;
                 } else {
                     System.out.println("Se cancelo la operacion");
                 }

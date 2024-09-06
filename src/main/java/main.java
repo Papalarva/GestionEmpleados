@@ -5,5 +5,7 @@ public class main {
         prueba.contratarEmpleado();
         prueba.consultarDatos();
         prueba.cargaDatosDomina();
+        prueba.despedirEmpleado();
+        prueba.consultarDatos();
     }
 }
