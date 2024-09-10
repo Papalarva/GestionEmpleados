@@ -7,16 +7,22 @@ public class Fecha {
 
     // CONSTRUCTORES 
     public Fecha() {
-        setAnio(0);
-        setMes(0);
-        setDia(0);
+        setAnio(2000);
+        setMes(1);
+        setDia(1);
     }
 
     public Fecha(int dia, int mes, int anio) {
-        
+
         setAnio(anio);
         setMes(mes);
         setDia(dia);
+    }
+    
+    public Fecha(Fecha fecha) {
+        setAnio(fecha.getAnio());
+        setMes(fecha.getMes());
+        setDia(fecha.getDia());
     }
 
     // METODOS GETS Y SETS
@@ -25,12 +31,18 @@ public class Fecha {
     }
 
     public void setDia(int dia) {
-        if (dia < 0) {
+        if (dia < 1) {
             this.dia = 1;
-        } else if (this.mes == 2) {
-            if ((this.anio % 4) == 0) {
+        } else if (mes == 2) {
+            if ((this.anio % 4 == 0 && this.anio % 100 != 0) || (this.anio % 400 == 0)) {
                 if (dia > 29) {
                     this.dia = 29;
+                } else {
+                    this.dia = dia;
+                }
+            } else {
+                if (dia > 28) {
+                    this.dia = 28;
                 } else {
                     this.dia = dia;
                 }
@@ -57,7 +69,7 @@ public class Fecha {
     public void setMes(int mes) {
         if (mes > 12) {
             this.mes = 12;
-        } else if (mes < 0) {
+        } else if (mes < 1) {
             this.mes = 1;
         } else {
             this.mes = mes;

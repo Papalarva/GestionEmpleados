@@ -8,6 +8,10 @@ public class GestionEmpleados {
 
     private ArrayList<Empleado> empleados;
 
+    public void setEmpleados(Empleado empleado) {
+        empleados.add(empleado);
+    }
+
     public GestionEmpleados() {
         empleados = new ArrayList<>();
     }
@@ -15,11 +19,11 @@ public class GestionEmpleados {
     public void cargaDatosDomina() {
         for (Empleado empleado : empleados) {
             if (empleado instanceof TrabajadorXComision) {
-                ((TrabajadorXComision) empleado).TrabajadorXComision();
+                
             } else if (empleado instanceof TrabajadorXHora) {
-                ((TrabajadorXHora) empleado).TrabajadorXHora();
+                
             } else if (empleado instanceof TrabajadorXPieza) {
-                ((TrabajadorXPieza) empleado).TrabajadorXPieza();
+                
             }
         }
     }
@@ -41,7 +45,10 @@ public class GestionEmpleados {
     }
 
     public void contratarEmpleado() {
+        int dia = 1, mes = 1, anio = 2000, numeroExterior = 1, numeroInterior = 1, codigoPostal = 1, opcion = 1;
+        double sueldo = 1, salarioBase = 1, comision = 1, pagoXPieza = 1, pagoXHora = 1;
 
+        // LECTURA DE LOS DATOS DE LOS EMPLEADOS
         System.out.println("-----D A T O S   D E L   E M P L E A D O-----");
         System.out.print("Ingrese el o los nombres: ");
         String nombre = sc.nextLine();
@@ -50,23 +57,65 @@ public class GestionEmpleados {
         System.out.print("Ingrese el apellido Materno: ");
         String apellidoMaterno = sc.nextLine();
         System.out.println("\n-----FECHA DE NACIMIENTO-----");
-        System.out.print("Ingrese el dia: ");
-        int dia = Integer.parseInt(sc.nextLine());
-        System.out.print("Ingrese el mes: ");
-        int mes = Integer.parseInt(sc.nextLine());
-        System.out.print("Ingrese el anio: ");
-        int anio = Integer.parseInt(sc.nextLine());
+        do {
+            try {
+                System.out.print("Ingrese el dia: ");
+                dia = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+            }
+        } while (true);
+        do {
+            try {
+                System.out.print("Ingrese el mes: ");
+                mes = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+            }
+        } while (true);
+        do {
+            try {
+                System.out.print("Ingrese el anio: ");
+                anio = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+            }
+        } while (true);
         System.out.println("\n-----DOMICILIO-----");
         System.out.print("Ingrese la calle: ");
         String calle = sc.nextLine();
-        System.out.print("Ingrese el numero exterior: ");
-        int numeroExterior = Integer.parseInt(sc.nextLine());
-        System.out.print("Ingrese el numero interior: ");
-        int numeroInterior = Integer.parseInt(sc.nextLine());
+        do {
+            try {
+                System.out.print("Ingrese el numero exterior: ");
+                numeroExterior = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+            }
+        } while (true);
+        do {
+            try {
+                System.out.print("Ingrese el numero interior: ");
+                numeroInterior = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+            }
+        } while (true);
         System.out.print("Ingrese la colonia: ");
         String colonia = sc.nextLine();
-        System.out.print("Ingrese el codigo postal: ");
-        int codigoPostal = Integer.parseInt(sc.nextLine());
+        do {
+            try {
+                System.out.print("Ingrese el codigo postal: ");
+                codigoPostal = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+            }
+        } while (true);
         System.out.print("Ingrese la ciudad: ");
         String ciudad = sc.nextLine();
         System.out.print("Ingrese el estado: ");
@@ -76,9 +125,11 @@ public class GestionEmpleados {
         String rfc = sc.nextLine();
         System.out.print("Ingrese el departamento asignado: ");
         String departamento = sc.nextLine();
+
+        // VALIDACION DE NO QUE NO EXISTA UN EMPLEADO CON EL MISMO RFC
         boolean encontrado = false;
         for (Empleado empleado : empleados) {
-            if (empleado.getRfc().equals(rfc)) {
+            if (empleado.getRfc().equals(rfc.toUpperCase())) {
                 encontrado = true;
                 break;
             }
@@ -86,40 +137,87 @@ public class GestionEmpleados {
         if (encontrado) {
             System.out.println("Empleado ya registrado");
         } else {
-            System.out.print("\n----- TIPO DE EMPLEADO ----- "
-                    + "\n1) Jefe"
-                    + "\n2) Trabajador por comision"
-                    + "\n3) Trabajador por pieza"
-                    + "\n4) Trabajador por hora"
-                    + "\nOPCION: ");
-            int opcion = Integer.parseInt(sc.nextLine());
+            System.out.print("""
+                             
+                             ----- TIPO DE EMPLEADO ----- 
+                             1) Jefe
+                             2) Trabajador por comision
+                             3) Trabajador por pieza
+                             4) Trabajador por hora
+                             OPCION: """);
+            do {
+                try {
+                    opcion = Integer.parseInt(sc.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                }
+            } while (true);
             System.out.println("");
             switch (opcion) {
-                case 1:
-                    System.out.print("Ingrese el sueldo semanal: $");
-                    double sueldo = Double.parseDouble(sc.nextLine());
+                case 1 -> {
+                    do {
+                        try {
+                            System.out.print("Ingrese el sueldo semanal: $");
+                            sueldo = Double.parseDouble(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                        }
+                    } while (true);
                     empleados.add(new Jefe(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento, sueldo));
-                    break;
-                case 2:
-                    System.out.print("Introduzca el salario base del empleado: $");
-                    double salarioBase = Double.parseDouble(sc.nextLine());
-                    System.out.print("Ingrese la comision del empleado (Entre 0 a 1): ");
-                    double comision = Double.parseDouble(sc.nextLine());
-                    empleados.add(new TrabajadorXComision(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento));
-                    break;
-                case 3:
-                    System.out.print("Ingrese el pago por pieza: $");
-                    double pagoXPieza = Double.parseDouble(sc.nextLine());
+                }
+                case 2 -> {
+                    do {
+                        try {
+                            System.out.print("Introduzca el salario base del empleado: $");
+                            salarioBase = Double.parseDouble(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                        }
+                    } while (true);
+                    do {
+                        try {
+                            System.out.print("Ingrese la comision del empleado (Entre 0 a 1): ");
+                            comision = Double.parseDouble(sc.nextLine());
+                            if (comision > 1 || comision < 0) {
+                                System.out.println("\nCantidad invalida. Introduzca un valor entre (0, 1)");
+                            } else {
+                                break;
+                            }
+                        } catch (NumberFormatException e) {
+                            System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                        }
+                    } while (true);
+                    empleados.add(new TrabajadorXComision(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento, salarioBase, comision));
+                }
+                case 3 -> {
+                    do {
+                        try {
+                            System.out.print("Ingrese el pago por pieza: $");
+                            pagoXPieza = Double.parseDouble(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                        }
+                    } while (true);
                     empleados.add(new TrabajadorXPieza(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento, pagoXPieza));
-                    break;
-                case 4:
-                    System.out.print("Ingrese el pago por hora: $");
-                    double pagoXHora = Double.parseDouble(sc.nextLine());
+                }
+                case 4 -> {
+                    do {
+                        try {
+                            System.out.print("Ingrese el pago por hora: $");
+                            pagoXHora = Double.parseDouble(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                        }
+                    } while (true);
                     empleados.add(new TrabajadorXHora(nombre, apellidoPaterno, apellidoMaterno, dia, mes, anio, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento, pagoXHora));
-                    break;
-                default:
-                    System.out.println("Opcion no valida");
-                    break;
+                }
+                default ->
+                    System.out.println("OPCION NO VALIDA");
             }
             System.out.println("\nEMPLEADO AGREGADO EXITOSAMENTE\n");
         }
@@ -131,11 +229,11 @@ public class GestionEmpleados {
         String rfc = sc.nextLine();
         boolean encontrado = false;
         for (Empleado empleado : empleados) {
-            if (empleado.getRfc().equals(rfc)) {
+            if (empleado.getRfc().equals(rfc.toUpperCase())) {
                 encontrado = true;
-                System.out.println("\n" + empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoMaterno() 
+                System.out.println("\n" + empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoMaterno()
                         + "\nDEPARTAMENTO: " + empleado.departamento);
-                
+
                 System.out.print("\nDeseas eliminar al empleado? 1)Si 2)No:  ");
                 int opcion = Integer.parseInt(sc.nextLine());
                 if (opcion == 1) {
@@ -152,7 +250,232 @@ public class GestionEmpleados {
     }
 
 //    public abstract void generarNomina(String periodo);
-    public void modificarDatos(String rfc) {
+    public void modificarDatos() {
+        int dia = 1, mes = 1, anio = 2000, numeroExterior = 1, numeroInterior = 1, codigoPostal = 1, opcion = 1;
+        boolean encontrado = false;
+
+        System.out.print("Ingrese el RFC del empleado: ");
+        String rfc = sc.nextLine();
+
+        for (Empleado empleado : empleados) {
+            if (empleado.getRfc().equals(rfc.toUpperCase())) {
+                encontrado = true;
+
+                System.out.println("\nNOMBRE: " + empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoMaterno()
+                        + "\nDEPARTAMENTO: " + empleado.getDepartamento());
+                System.out.print("""
+                                 
+                                 Seleccione la opcion que desea realizar: 
+                                 1) Modificar datos generales
+                                 2) Modificar datos de salario
+                                 OPCION: """);
+                do {
+                    try {
+                        opcion = Integer.parseInt(sc.nextLine());
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                    }
+                } while (true);
+                switch (opcion) {
+                    case 1 -> {
+                        System.out.println("\nNOMBRE: " + empleado.getNombres()
+                                + "\nAPELLIDO PATERNO: " + empleado.getApellidoPaterno()
+                                + "\nAPELLIDO MATERNO: " + empleado.getApellidoMaterno()
+                                + "\nFECHA DE NACIMIENTO: " + empleado.getFechaNacimiento()
+                                + "\nDOMICILIO: " + empleado.getDomicilio()
+                                + "\nRFC: " + empleado.getRfc()
+                                + "\nDEPARTAMENTO: " + empleado.getDepartamento());
+
+                        System.out.print("""
+                                         
+                                         Que dato desear cambiar? 
+                                         1) NOMBRE
+                                         2) APELLIDO PATERNO
+                                         3) APELLIDO MATERNO
+                                         4) FECHA DE NACIMIENTO
+                                         5) DOMICILIO
+                                         6) RFC
+                                         7) DEPARTAMENTO
+                                         OPCION: """);
+                        do {
+                            try {
+                                opcion = Integer.parseInt(sc.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                            }
+                        } while (true);
+                        System.out.println("");
+                        switch (opcion) {
+                            case 1 -> {
+                                System.out.print("Ingrese el o los nombres: ");
+                                empleado.setNombres(sc.nextLine());
+                        }
+                            case 2 -> {
+                                System.out.print("Ingrese el apellido Paterno: ");
+                                empleado.setApellidoPaterno(sc.nextLine());
+                        }
+                            case 3 -> {
+                                System.out.print("Ingrese el apellido Materno: ");
+                                empleado.setApellidoMaterno(sc.nextLine());
+                        }
+                            case 4 -> {
+                                do {
+                                    try {
+                                        System.out.print("Ingrese el dia: ");
+                                        dia = Integer.parseInt(sc.nextLine());
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                    }
+                                } while (true);
+                                do {
+                                    try {
+                                        System.out.print("Ingrese el mes: ");
+                                        mes = Integer.parseInt(sc.nextLine());
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                    }
+                                } while (true);
+                                do {
+                                    try {
+                                        System.out.print("Ingrese el anio: ");
+                                        anio = Integer.parseInt(sc.nextLine());
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                    }
+                                } while (true);
+                                empleado.setFechaNacimiento(new Fecha(dia, mes, anio));
+                        }
+                            case 5 -> {
+                                System.out.print("Ingrese la calle: ");
+                                String calle = sc.nextLine();
+                                do {
+                                    try {
+                                        System.out.print("Ingrese el numero exterior: ");
+                                        numeroExterior = Integer.parseInt(sc.nextLine());
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                    }
+                                } while (true);
+                                do {
+                                    try {
+                                        System.out.print("Ingrese el numero interior: ");
+                                        numeroInterior = Integer.parseInt(sc.nextLine());
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                    }
+                                } while (true);
+                                System.out.print("Ingrese la colonia: ");
+                                String colonia = sc.nextLine();
+                                do {
+                                    try {
+                                        System.out.print("Ingrese el codigo postal: ");
+                                        codigoPostal = Integer.parseInt(sc.nextLine());
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                    }
+                                } while (true);
+                                System.out.print("Ingrese la ciudad: ");
+                                String ciudad = sc.nextLine();
+                                System.out.print("Ingrese el estado: ");
+                                String estado = sc.nextLine();
+                                empleado.setDomicilio(new Direccion(calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado));
+                        }
+                            case 6 -> {
+                                System.out.print("Ingrese el RFC del empleado: ");
+                                empleado.setRfc(sc.nextLine());
+                        }
+                            case 7 -> {
+                                System.out.print("Ingrese el departamento asignado: ");
+                                empleado.setDepartamento(sc.nextLine());
+                        }
+                            default -> System.err.println("OPCION NO VALIDA");
+                        }
+                    }
+                    case 2 -> {
+                    switch (empleado) {
+                        case Jefe jefe -> {
+                            System.out.println("SUELDO SEMANAL: $" + jefe.getSueldoSemanal() + "\n");
+                            do {
+                                try {
+                                    System.out.print("Ingrese el sueldo semanal: $");
+                                    jefe.setSueldoSemanal(Double.parseDouble(sc.nextLine()));
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                }
+                            } while (true);
+                        }
+                        case TrabajadorXComision trabajadorXComision -> {
+                            System.out.println("SALARIO BASE: $" + trabajadorXComision.getSalarioBase()
+                                    + "\nCOMISION: " + trabajadorXComision.getComision() + "\n");
+                            do {
+                                try {
+                                    System.out.print("Introduzca el salario base del empleado: $");
+                                    trabajadorXComision.setSalarioBase(Double.parseDouble(sc.nextLine()));
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                }
+                            } while (true);
+                            double comision;
+                            do {
+                                try {
+                                    System.out.print("Ingrese la comision del empleado (Entre 0 a 1): ");
+                                    comision = Double.parseDouble(sc.nextLine());
+                                    if (comision > 1 || comision < 0) {
+                                        System.out.println("\nCantidad invalida. Introduzca un valor entre (0, 1)");
+                                    } else {
+                                        trabajadorXComision.setComision(comision);
+                                        break;
+                                    }
+                                } catch (NumberFormatException e) {
+                                    System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                }
+                            } while (true);
+                        }
+                        case TrabajadorXHora trabajadorXHora -> {
+                            System.out.println("PAGO POR Hora: $" + trabajadorXHora.getPagoXHora() + "\n");
+                            do {
+                                try {
+                                    System.out.print("Ingrese el pago por hora: $");
+                                    trabajadorXHora.setPagoXHora(Double.parseDouble(sc.nextLine()));
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                }
+                            } while (true);
+                        }
+                        case TrabajadorXPieza trabajadorXPieza -> {
+                            System.out.println("PAGO POR PIEZA: $" + trabajadorXPieza.getPagoXPieza() + "\n");
+                            do {
+                                try {
+                                    System.out.print("Ingrese el pago por pieza: $");
+                                    trabajadorXPieza.setPagoXPieza(Double.parseDouble(sc.nextLine()));
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                                }
+                            } while (true);
+                        }
+                        default -> {
+                        }
+                    }
+                    }
+                    default -> System.err.println("OPCION NO VALIDA");
+                }
+            }
+        }
+        if (!encontrado) {
+            System.out.println("Empleado no encontrado");
+        }
 
     }
 }

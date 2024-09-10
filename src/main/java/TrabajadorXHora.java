@@ -1,15 +1,15 @@
 
-import java.util.Scanner;
-
 public class TrabajadorXHora extends Empleado {
 
-    private Scanner sc = new Scanner(System.in);
+    private static final double PAGO_HORA_DEFAULT = 50;
+    
     private double pagoXHora;
-    private int horasTrabajadas;
+    private int horasTrabajadas = 40;
 
     // CONSTRUCTORES
     public TrabajadorXHora() {
         super();
+        setPagoXHora(PAGO_HORA_DEFAULT);
     }
 
     public TrabajadorXHora(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento, double pagoXHora) {
@@ -28,7 +28,7 @@ public class TrabajadorXHora extends Empleado {
     }
 
     public void setPagoXHora(double pagoXHora) {
-        this.pagoXHora = pagoXHora > 0 ? pagoXHora : 50;
+        this.pagoXHora = pagoXHora > 0 ? pagoXHora : PAGO_HORA_DEFAULT;
     }
 
     public int getHorasTrabajadas() {
@@ -37,12 +37,6 @@ public class TrabajadorXHora extends Empleado {
 
     public void setHorasTrabajadas(int horasTrabajadas) {
         this.horasTrabajadas = horasTrabajadas > 0 ? horasTrabajadas : 40;
-    }
-
-    // METODOS PROPIOS
-    public void TrabajadorXHora() {
-        System.out.print("Ingrese las horas trabajadas: ");
-        this.horasTrabajadas = sc.nextInt();
     }
 
     @Override
@@ -57,10 +51,9 @@ public class TrabajadorXHora extends Empleado {
     }
 
     // METODO TOSTRING
-
     @Override
     public String toString() {
-        return super.toString() + "\nPAGO POR HORA: $" + this.pagoXHora;
+        return super.toString() + "\nTIPO DE EMPLEADO: TRABAJADOR POR HORA \nPAGO POR HORA: $" + this.pagoXHora;
     }
-    
+
 }

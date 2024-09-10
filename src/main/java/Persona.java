@@ -1,5 +1,7 @@
+import java.time.LocalDate;
 
 public class Persona {
+    
 
     protected String nombres;
     protected String apellidoPaterno;
@@ -62,20 +64,31 @@ public class Persona {
         return fechaNacimiento;
     }
 
+    public void setFechaNacimiento(Fecha fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public void setDomicilio(Direccion domicilio) {
+        this.domicilio = domicilio;
+    }
+    
+    
+
     public Direccion getDomicilio() {
         return domicilio;
     }
 
     // METODO EDAD
     public int edad() {
-        return 2024 - this.fechaNacimiento.getAnio();
+        LocalDate fechaActual = LocalDate.now();
+        return fechaActual.getYear() - this.fechaNacimiento.getAnio();
     }
 
     // METODO TOSTRING
     @Override
     public String toString() {
         return this.nombres + " " + this.apellidoPaterno + " "+ this.apellidoMaterno
-                + "\nEDAD: " + edad() + " \nDOMICILIO:" + domicilio;
+                + "\nEDAD: " + edad() + " \nDOMICILIO: " + domicilio;
     }
 
 }

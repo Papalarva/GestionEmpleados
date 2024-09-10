@@ -7,8 +7,8 @@ public abstract class Empleado extends Persona {
     // CONSTRUCTORES
     public Empleado() {
         super();
-        setRfc("");
-        setDepartamento("");
+        setRfc("Sin datos");
+        setDepartamento("Sin datos");
     }
 
     public Empleado(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento) {

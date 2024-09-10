@@ -29,6 +29,16 @@ public class Direccion {
         setCiudad(ciudad);
         setEstado(estado);
     }
+    
+    public Direccion(Direccion domicilio){
+        setCalle(domicilio.getCalle());
+        setNumeroExterior(domicilio.getNumeroExterior());
+        setNumeroInterior(domicilio.getNumeroExterior());
+        setColonia(domicilio.getColonia());
+        setCodigoPostal(domicilio.getCodigoPostal());
+        setCiudad(domicilio.getCiudad());
+        setEstado(domicilio.getEstado());
+    }
 
     // METODOS SETS Y GETS
     public String getCalle() {

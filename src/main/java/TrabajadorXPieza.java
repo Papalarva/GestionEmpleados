@@ -1,15 +1,16 @@
 
-import java.util.Scanner;
 
 public class TrabajadorXPieza extends Empleado {
 
-    Scanner sc = new Scanner(System.in);
+    private static final double PAGO_PIEZA_DEFAULT = 20;
+    
     private double pagoXPieza;
-    private int cantidad = 0;
+    private int cantidad = 1;
 
     // CONTRUCTORES
     public TrabajadorXPieza() {
         super();
+        setPagoXPieza(PAGO_PIEZA_DEFAULT);
     }
 
     public TrabajadorXPieza(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento, double pagoXPieza) {
@@ -28,7 +29,7 @@ public class TrabajadorXPieza extends Empleado {
     }
 
     public void setPagoXPieza(double pagoXPieza) {
-        this.pagoXPieza = pagoXPieza > 0 ? pagoXPieza : 100;
+        this.pagoXPieza = pagoXPieza > 0 ? pagoXPieza : PAGO_PIEZA_DEFAULT;
     }
 
     public int getCantidad() {
@@ -39,12 +40,6 @@ public class TrabajadorXPieza extends Empleado {
         this.cantidad = cantidad > 0 ? cantidad : 1;
     }
 
-    // METODOS PROPIOS
-    public void TrabajadorXPieza() {
-        System.out.print("Ingrese la cantidad de piezas producidas: ");
-        this.pagoXPieza = sc.nextInt();
-    }
-
     @Override
     public double sueldo() {
         return this.pagoXPieza * this.cantidad;
@@ -53,7 +48,7 @@ public class TrabajadorXPieza extends Empleado {
     // METODO TOSTRING
     @Override
     public String toString() {
-        return super.toString() + "\nPAGO POR PIEZA: $" + this.pagoXPieza;
+        return super.toString() + "\nTIPO DE EMPLEADO: TRABAJADOR POR PIEZA \nPAGO POR PIEZA: $" + this.pagoXPieza;
     }
 
 }

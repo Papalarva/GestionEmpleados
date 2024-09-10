@@ -1,12 +1,13 @@
 
 public class Jefe extends Empleado {
 
+    private static final double SALARIO_BASE_DEFAULT = 2500;
     private double sueldoSemanal;
 
     // CONTRUCTORES
     public Jefe() {
         super();
-        this.sueldoSemanal = 1800;
+        this.sueldoSemanal = SALARIO_BASE_DEFAULT;
     }
 
     public Jefe(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento, double sueldoSemanal) {
@@ -25,19 +26,18 @@ public class Jefe extends Empleado {
     }
 
     public void setSueldoSemanal(double sueldoSemanal) {
-        this.sueldoSemanal = sueldoSemanal > 0 ? sueldoSemanal : 2000;
+        this.sueldoSemanal = sueldoSemanal > 0 ? sueldoSemanal : SALARIO_BASE_DEFAULT;
     }
 
     @Override
     public double sueldo() {
         return this.sueldoSemanal;
     }
-    
-    // METODO TOSTRING
 
+    // METODO TOSTRING
     @Override
     public String toString() {
-        return super.toString() + "\nSUELDO SEMANAL: " + this.sueldoSemanal;
+        return super.toString() + "\nTIPO DE EMPLEADO: JEFE \nSUELDO SEMANAL: " + this.sueldoSemanal;
     }
-    
+
 }

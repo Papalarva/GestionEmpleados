@@ -1,24 +1,25 @@
 
-import java.util.Scanner;
-
 public class TrabajadorXComision extends Empleado {
-
-    Scanner sc = new Scanner(System.in);
+    private static final double SALARIO_BASE_DEFAULT = 2500;
+    
     private double salarioBase;
     private double comision;
-    private int cantidad = 0;
+    private int cantidad = 1;
 
     // CONSTRUCTORES
     public TrabajadorXComision() {
+        super();
+        setSalarioBase(SALARIO_BASE_DEFAULT);
+        setComision(0.1);
     }
 
-    public TrabajadorXComision(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento, double salarioBase, double comsion) {
+    public TrabajadorXComision(String nombres, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, Direccion domicilio, String rfc, String departamento, double salarioBase, double comision) {
         super(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, domicilio, rfc, departamento);
         setSalarioBase(salarioBase);
         setComision(comision);
     }
 
-    public TrabajadorXComision(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, String rfc, String departamento) {
+    public TrabajadorXComision(String nombres, String apellidoPaterno, String apellidoMaterno, int anio, int mes, int dia, String calle, int numeroExterior, int numeroInterior, String colonia, int codigoPostal, String ciudad, String estado, String rfc, String departamento, double salarioBase, double comision) {
         super(nombres, apellidoPaterno, apellidoMaterno, anio, mes, dia, calle, numeroExterior, numeroInterior, colonia, codigoPostal, ciudad, estado, rfc, departamento);
         setSalarioBase(salarioBase);
         setComision(comision);
@@ -30,7 +31,7 @@ public class TrabajadorXComision extends Empleado {
     }
 
     public void setSalarioBase(double salarioBase) {
-        this.salarioBase = salarioBase > 0 ? salarioBase : 1800;
+        this.salarioBase = salarioBase > 0 ? salarioBase : SALARIO_BASE_DEFAULT;
     }
 
     public double getComision() {
@@ -52,22 +53,12 @@ public class TrabajadorXComision extends Empleado {
     // METODO TOSTRING
     @Override
     public String toString() {
-        return super.toString() + "\nSALARIO BASE: " + this.salarioBase + "\nCOMISION: ";
-    }
-
-    // METODOS PROPIOS
-    public void TrabajadorXComision() {
-        System.out.print("Ingrese la cantidad vendida: $");
-        this.cantidad = sc.nextInt();
-
+        return super.toString() + "\nTIPO DE EMPLEADO: TRABAJADOR POR COMISION \nSALARIO BASE: " + this.salarioBase + "\nCOMISION: " + this.comision;
     }
 
     @Override
     public double sueldo() {
         return this.salarioBase + (this.comision * this.cantidad);
     }
-    
-    // METODO TOSTRINGS
-    
 
 }
