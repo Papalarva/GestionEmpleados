@@ -17,41 +17,75 @@ public class GestionEmpleados {
     }
 
     public void cargaDatosDomina() {
+        int cantidad = 1, horas = 1, piezas = 1;
         for (Empleado empleado : empleados) {
             switch (empleado) {
                 case TrabajadorXComision trabajadorXComision -> {
                     System.out.println(empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno() + "\tTRABAJADOR POR COMISION");
                     do {
-                        try {
-                            System.out.print("Introduzca la cantidad vendida: $");
-                            trabajadorXComision.setCantidad(Integer.parseInt(sc.nextLine()));
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                        do {
+                            try {
+                                System.out.print("Ingrese la cantidad de productos vendidos: ");
+                                cantidad = Integer.parseInt(sc.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                            }
+                        } while (true);
+                        if (cantidad > 0) {
+                            System.out.print("La cantidad de productos vendidos = $" + cantidad + " es correcta? S/N: ");
+                            if (sc.nextLine().toUpperCase().equals("S")) {
+                                trabajadorXComision.setCantidad(cantidad);
+                                break;
+                            } else {
+                                System.out.println("");
+                            }
                         }
                     } while (true);
                 }
                 case TrabajadorXHora trabajadorXHora -> {
                     System.out.println(empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno() + "\tTRABAJADOR POR HORA");
                     do {
-                        try {
-                            System.out.print("Introduzca el numero de horas trabajadas: ");
-                            trabajadorXHora.setHorasTrabajadas(Integer.parseInt(sc.nextLine()));
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                        do {
+                            try {
+                                System.out.print("Ingrese el numero de horas trabajadas: ");
+                                horas = Integer.parseInt(sc.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                            }
+                        } while (true);
+                        if (horas > 0) {
+                            System.out.print("La cantidad de horas trabajadas = " + horas + " es correcta? S/N: ");
+                            if (sc.nextLine().toUpperCase().equals("S")) {
+                                trabajadorXHora.setHorasTrabajadas(horas);
+                                break;
+                            } else {
+                                System.out.println("");
+                            }
                         }
                     } while (true);
                 }
                 case TrabajadorXPieza trabajadorXPieza -> {
                     System.out.println(empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno() + "\tTRABAJADOR POR PIEZA");
                     do {
-                        try {
-                            System.out.print("Introduzca la de piezas producidas: ");
-                            trabajadorXPieza.setCantidad(Integer.parseInt(sc.nextLine()));
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                        do {
+                            try {
+                                System.out.print("Ingrese la cantidad de piezas producidas: ");
+                                piezas = Integer.parseInt(sc.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println("\nEntrada invalida. Vuelva a intentar...\n");
+                            }
+                        } while (true);
+                        if (piezas > 0) {
+                            System.out.print("La cantidad de piezas producidas = " + piezas + " es correcta? S/N: ");
+                            if (sc.nextLine().toUpperCase().equals("S")) {
+                                trabajadorXPieza.setCantidad(piezas);
+                                break;
+                            } else {
+                                System.out.println("");
+                            }
                         }
                     } while (true);
                 }
@@ -284,7 +318,7 @@ public class GestionEmpleados {
     }
 
     public void generarNomina() {
-        int dia = 1, mes = 1, anio = 1, contador = 1;
+        int dia = 1, mes = 1, anio = 2000, contador = 1;
         System.out.println("Introduzca el periodo de pago");
         System.out.println("\n-----D E S D E-----");
         do {
@@ -344,29 +378,38 @@ public class GestionEmpleados {
             }
         } while (true);
         Fecha fin = new Fecha(dia, mes, anio);
-        System.out.println("\n\n--------------------P E R I O D O   D E   P A G O----------" 
-                           + "\n                  ("+ inicio + "    al    " + fin+")");
-       
+
+        System.out.println("""
+                           
+                           
+                           --------------------P E R I O D O   D E   P A G O----------
+                                             (""" + inicio + "    al    " + fin + ")");
+
+        // Imprimir encabezado de la tabla
         System.out.printf("\n%-5s%-20s%-30s%-10s", "NO.", "RFC", "NOMBRE", "TIPO DE EMPLEADO");
-        System.out.printf("\n%-5s%-20s%-15s%-15s%-10s", " ", "SUELDO BASE", "COMISION/", "CANTIDAD/" , "SUELDO");
-        System.out.printf("\n%-5s%-20s%-15s%-15s%-10s\n", " ", " ", "SUELDOXHORA", "HRS" , " ");
+        System.out.printf("\n%-5s%-20s%-15s%-15s%-10s", " ", "SUELDO BASE", "COMISION/", "CANTIDAD/", "SUELDO");
+        System.out.printf("\n%-5s%-20s%-15s%-15s%-10s\n", " ", " ", "SUELDOXHORA", "HRS", " ");
+
+        // Imprimir cada empleado
         for (Empleado empleado : empleados) {
+
             switch (empleado) {
                 case Jefe jefe -> {
-                    System.out.printf("\n%-5s%-20s%-30s%-10s", contador, empleado.getRfc(), empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno(), "Jefe");
+                    System.out.printf("\n%-5s%-20s%-30s%-10s", contador, empleado.getRfc(), empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno(), "JEFE");
                     System.out.printf("\n%-5s%-20s%-30s%-10s\n\n", " ", jefe.getSueldoSemanal(), " ", empleado.sueldo());
                 }
                 case TrabajadorXComision trabajadorXComision -> {
-                    System.out.printf("\n%-5s%-20s%-30s%-10s", contador, empleado.getRfc(), empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno(), "Empleado por comision");
-                    System.out.printf("\n%-5s%-20s%-15s%-15s%-10s\n\n", " ", trabajadorXComision.getSalarioBase(), trabajadorXComision.getComision(),trabajadorXComision.getCantidad(), empleado.sueldo());
+                    System.out.printf("\n%-5s%-20s%-30s%-10s", contador, empleado.getRfc(), empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno(), "EMPLEADO POR COMISION");
+                    System.out.printf("\n%-5s%-20s%-15s%-15s%-10s\n\n", " ", trabajadorXComision.getSalarioBase(), trabajadorXComision.getComision(), trabajadorXComision.getCantidad(), empleado.sueldo());
                 }
                 case TrabajadorXHora trabajadorXHora -> {
-                    System.out.printf("\n%-5s%-20s%-30s%-10s", contador, empleado.getRfc(), empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno(), "Empleado por hora");
-                    System.out.printf("\n%-5s%-20s%-15s%-15s%-10s\n\n", " ", "", trabajadorXHora.getPagoXHora(),trabajadorXHora.getHorasTrabajadas(), empleado.sueldo());
+                    System.out.printf("\n%-5s%-20s%-30s%-10s", contador, empleado.getRfc(), empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno(), "EMPLEADO POR HORA");
+                    System.out.printf("\n%-5s%-20s%-15s%-15s%-10s\n\n", " ", "", trabajadorXHora.getPagoXHora(), trabajadorXHora.getHorasTrabajadas(), empleado.sueldo());
                 }
                 case TrabajadorXPieza trabajadorXPieza -> {
-                    System.out.printf("\n%-5s%-20s%-30s%-10s", contador, empleado.getRfc(), empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno(), "Empleado por pieza");
-                    System.out.printf("\n%-5s%-20s%-15s%-15s%-10s\n\n", " ", " ", trabajadorXPieza.getPagoXPieza(),trabajadorXPieza.getCantidad(), empleado.sueldo());
+                    System.out.printf("\n%-5s%-20s%-30s%-10s", contador, empleado.getRfc(), empleado.getNombres() + " " + empleado.getApellidoPaterno() + " " + empleado.getApellidoPaterno(), "EMPLEADO POR PIEZA");
+                    System.out.printf("\n%-5s%-20s%-15s%-15s%-10s\n\n", " ", " ", trabajadorXPieza.getPagoXPieza(), trabajadorXPieza.getCantidad(), empleado.sueldo());
+
                 }
                 default -> {
                 }
